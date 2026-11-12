@@ -232,6 +232,18 @@ details.costs summary::before{content:'▸ '}details[open].costs summary::before
 .menu button{display:flex;align-items:center;gap:10px;text-align:left;border:1px solid var(--line);background:#fff;border-radius:14px;padding:13px 14px;font-size:14px}
 .menu button::after{content:'›';margin-left:auto;color:var(--muted);font-size:18px}
 .menu .danger{color:var(--pink-ink)}
+/* ---------- 자주 묻는 질문 ---------- */
+.faqlink{display:block;margin:22px auto 4px;background:none;border:0;padding:6px 10px;font-size:12.5px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.faqlink:hover{color:var(--accent)}
+.backbtn{background:none;border:0;padding:4px 0;margin-bottom:8px;font-size:14px;color:var(--accent);cursor:pointer}
+.faq{border-top:1px solid var(--line)}
+.faq:first-child{border-top:0}
+.faq summary{cursor:pointer;list-style:none;padding:14px 22px 14px 0;font-size:14.5px;font-weight:bold;line-height:1.5;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'＋';position:absolute;right:0;top:14px;color:var(--muted);font-weight:normal}
+.faq[open] summary::after{content:'－'}
+.faq summary .q{color:var(--accent);margin-right:6px}
+.faq p{margin:0 0 14px;font-size:13.5px;line-height:1.7;color:var(--sub)}
 
 /* ---------- 바텀시트(팝업) ---------- */
 .sheet{position:absolute;inset:0;z-index:40;background:#3a334600;display:flex;flex-direction:column;justify-content:flex-end;transition:background .25s}
@@ -503,6 +515,26 @@ input,textarea,select{font-size:14.5px;padding:10px}
         </div>
         <p class="foot">예시 사진은 일러스트예요. 로그인·초대·콕 찌르기·친구 응답은 시연용으로 흉내 낸 것이며, 데이터와 사진은 이 브라우저에만 저장되고 다른 사람과 자동으로 동기화되지 않습니다.</p>
       </div>
+      <button class="faqlink" id="faqBtn">자주 묻는 질문</button>
+    </section>
+
+    <!-- 자주 묻는 질문 -->
+    <section class="screen" id="s-faq" hidden>
+      <button class="backbtn" id="faqBack" aria-label="마이페이지로 돌아가기">‹ 돌아가기</button>
+      <div class="eyebrow">FAQ</div>
+      <h1 class="pagetitle">자주 묻는 질문</h1>
+      <div class="card">
+        <details class="faq"><summary><span class="q">Q1.</span>따로 회원가입이나 로그인하지 않아도 바로 사용할 수 있나요?</summary>
+          <p>네! 별도의 회원가입이나 로그인 없이 웹 브라우저에서 우리사이를 체험할 수 있습니다.<br>메인 화면의 <b>'예시 데이터 보기'</b>를 선택하면 우리사이의 주요 기능을 바로 살펴볼 수 있어요.<br>단, 예시 데이터 체험과 실제 기록의 저장·공유는 구분될 수 있습니다.</p></details>
+        <details class="faq"><summary><span class="q">Q2.</span>이미 다녀온 여행이나 지난 모임의 추억도 기록할 수 있나요?</summary>
+          <p>우리사이는 앞으로의 약속뿐만 아니라 이미 지나간 소중한 순간들도 기록하고 보관하는 것을 목표로 합니다.<br>프로토타입 테스트에서도 과거 날짜에 추억을 등록하고 싶다는 의견이 있었습니다.<br>이에 따라 지난 날짜를 선택해 사진과 장소, 함께한 추억을 기록하는 기능을 주요 개선 과제로 검토하고 있습니다.</p></details>
+        <details class="faq"><summary><span class="q">Q3.</span>친구들이 모두 회원가입해야 하나요? 로그인하지 않아도 모임이나 투표에 참여할 수 있나요?</summary>
+          <p>우리사이는 친구, 연인, 가족이 함께 추억을 공유하는 서비스인 만큼 누구나 쉽게 참여할 수 있는 경험을 중요하게 생각합니다.<br>현재는 공유 링크를 통해 비회원도 모임 투표 등 일부 기능에 간편하게 참여할 수 있는 방식을 개선 방향으로 검토하고 있습니다.<br>사진과 추억을 안전하게 보관할 수 있도록 사용자별 접근 권한 관리도 함께 고려할 예정입니다.</p></details>
+        <details class="faq"><summary><span class="q">Q4.</span>월말 결산이나 여행 기록을 인스타그램 스토리용 이미지로 어떻게 저장하나요?</summary>
+          <p>모임 및 결산 탭에서 작성한 기록을 바탕으로 월말 결산 포스팅을 생성해 보세요.<br>이후 '스토리 이미지 저장' 버튼을 누르면 인스타그램 스토리에 공유하기 좋은 세로형 이미지로 저장할 수 있습니다.<br>함께한 추억을 우리사이에 보관하고, SNS에서도 간편하게 공유해 보세요.</p></details>
+        <details class="faq"><summary><span class="q">Q5.</span>휴대폰을 바꾸거나 브라우저를 닫으면 작성한 기록이 사라지나요?</summary>
+          <p>현재 버전은 브라우저의 로컬 저장 환경을 기반으로 작동합니다.<br>일반적으로 같은 기기와 브라우저에서 창을 닫았다가 다시 접속해도 저장된 기록은 유지됩니다.<br>다만 기기를 변경하거나 브라우저의 사이트 데이터가 삭제되면 기록이 사라질 수 있습니다.<br>앞으로는 소중한 추억을 더욱 안전하게 보관할 수 있도록 클라우드 백업 및 공유 기능을 개선 방향으로 검토하고 있습니다.</p></details>
+      </div>
     </section>
   </div>
 
@@ -703,9 +735,11 @@ document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;const open=[.
 
 /* ---------- 탭 ---------- */
 function setTab(t){tab=t;document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===t));
- ['home','plans','map','recap','group'].forEach(k=>$('s-'+k).hidden=k!==t);$('screens').scrollTop=0}
+ ['home','plans','map','recap','group','faq'].forEach(k=>$('s-'+k).hidden=k!==t);$('screens').scrollTop=0}
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>setTab(b.dataset.tab));
 $('meBtn').onclick=()=>setTab('group');
+$('faqBtn').onclick=()=>setTab('faq');
+$('faqBack').onclick=()=>setTab('group');
 
 /* ---------- 렌더 ---------- */
 function fillGroupPick(id,sel){const e=$(id);e.innerHTML=data.groups.map(x=>`<option ${x===sel?'selected':''}>${esc(x)}</option>`).join('');e.value=sel}
